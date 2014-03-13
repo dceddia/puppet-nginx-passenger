@@ -74,7 +74,7 @@ define nginx_passenger::vhost(
     command => '/etc/init.d/nginx restart',
     require => File["${nginx_passenger::installdir}/conf/sites-enabled/${host}"],
     refreshonly => true,
-    subscribe => File["${nginx_passenger::installdir}/conf/sites-enabled/${host}"],
+    subscribe => [File["${nginx_passenger::installdir}/conf/sites-enabled/${host}"], File[$host]],
   }
 }
 
