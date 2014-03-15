@@ -22,4 +22,10 @@ server {
         return 301 https://$server_name$request_uri;
       }
       <% end %>
+
+      location ~* \.(jpg|jpeg|gif|png|css|js|swf)(\?[0-9]+)?$ {
+        expires max;
+        passenger_enabled on;
+        access_log off;
+      }
 }
